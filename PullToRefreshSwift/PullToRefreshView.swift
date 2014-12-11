@@ -14,6 +14,8 @@ enum PullToRefreshState {
 
 public class PullToRefreshView: UIView {
 
+    // MARK: Variables
+    
     let contentOffsetKeyPath = "contentOffset"
     var kvoContext = ""
     
@@ -41,6 +43,8 @@ public class PullToRefreshView: UIView {
             }
         }
     }
+    
+    // MARK: UIView
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -89,11 +93,6 @@ public class PullToRefreshView: UIView {
         self.indicator.center = self.arrow.center
     }
     
-    deinit {
-        var scrollView = superview as? UIScrollView
-        scrollView?.removeObserver(self, forKeyPath: contentOffsetKeyPath, context: &kvoContext)
-    }
-    
     public override func willMoveToSuperview(superView: UIView!) {
         superview?.removeObserver(self, forKeyPath: contentOffsetKeyPath, context: &kvoContext)
         if (superView != nil && superView is UIScrollView) {
@@ -102,6 +101,13 @@ public class PullToRefreshView: UIView {
             scrollViewInsets = (superView as UIScrollView).contentInset
         }
     }
+    
+    deinit {
+        var scrollView = superview as? UIScrollView
+        scrollView?.removeObserver(self, forKeyPath: contentOffsetKeyPath, context: &kvoContext)
+    }
+    
+    // MARK: KVO
     
     public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<()>) {
         
@@ -133,7 +139,8 @@ public class PullToRefreshView: UIView {
         }
     }
     
-
+    // MARK: private
+    
     private func startAnimating() {
         self.indicator.startAnimating()
         self.arrow.hidden = true
