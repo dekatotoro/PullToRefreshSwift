@@ -14,6 +14,10 @@
 		C53BEC4A1A357BCA008A4302 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C53BEC491A357BCA008A4302 /* Images.xcassets */; };
 		C53BEC4D1A357BCA008A4302 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53BEC4B1A357BCA008A4302 /* LaunchScreen.xib */; };
 		C53BEC591A357BCA008A4302 /* PullToRefreshSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53BEC581A357BCA008A4302 /* PullToRefreshSwiftTests.swift */; };
+		C53BEC691A357C3C008A4302 /* PullToRefreshConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53BEC641A357C3C008A4302 /* PullToRefreshConst.swift */; };
+		C53BEC6A1A357C3C008A4302 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53BEC651A357C3C008A4302 /* PullToRefreshView.swift */; };
+		C53BEC6C1A357C3C008A4302 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53BEC671A357C3C008A4302 /* UIScrollViewExtension.swift */; };
+		C54F64521A39733E00518F38 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F64511A39733E00518F38 /* ArrayExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,10 @@
 		C53BEC521A357BCA008A4302 /* PullToRefreshSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PullToRefreshSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C53BEC571A357BCA008A4302 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C53BEC581A357BCA008A4302 /* PullToRefreshSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshSwiftTests.swift; sourceTree = "<group>"; };
+		C53BEC641A357C3C008A4302 /* PullToRefreshConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshConst.swift; sourceTree = "<group>"; };
+		C53BEC651A357C3C008A4302 /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
+		C53BEC671A357C3C008A4302 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
+		C54F64511A39733E00518F38 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +87,10 @@
 		C53BEC3C1A357BCA008A4302 /* PullToRefreshSwift */ = {
 			isa = PBXGroup;
 			children = (
+				C53BEC621A357C1B008A4302 /* PullToRefresh */,
 				C53BEC3F1A357BCA008A4302 /* AppDelegate.swift */,
 				C53BEC441A357BCA008A4302 /* ViewController.swift */,
+				C54F64511A39733E00518F38 /* ArrayExtension.swift */,
 				C53BEC461A357BCA008A4302 /* Main.storyboard */,
 				C53BEC491A357BCA008A4302 /* Images.xcassets */,
 				C53BEC4B1A357BCA008A4302 /* LaunchScreen.xib */,
@@ -113,6 +123,16 @@
 				C53BEC571A357BCA008A4302 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C53BEC621A357C1B008A4302 /* PullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				C53BEC641A357C3C008A4302 /* PullToRefreshConst.swift */,
+				C53BEC651A357C3C008A4302 /* PullToRefreshView.swift */,
+				C53BEC671A357C3C008A4302 /* UIScrollViewExtension.swift */,
+			);
+			name = PullToRefresh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,9 +235,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C53BEC691A357C3C008A4302 /* PullToRefreshConst.swift in Sources */,
+				C53BEC6A1A357C3C008A4302 /* PullToRefreshView.swift in Sources */,
 				C53BEC451A357BCA008A4302 /* ViewController.swift in Sources */,
 				C53BEC401A357BCA008A4302 /* AppDelegate.swift in Sources */,
 				C53BEC431A357BCA008A4302 /* PullToRefreshSwift.xcdatamodeld in Sources */,
+				C54F64521A39733E00518F38 /* ArrayExtension.swift in Sources */,
+				C53BEC6C1A357C3C008A4302 /* UIScrollViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +433,7 @@
 				C53BEC5E1A357BCA008A4302 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C53BEC5F1A357BCA008A4302 /* Build configuration list for PBXNativeTarget "PullToRefreshSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +442,7 @@
 				C53BEC611A357BCA008A4302 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -1,9 +1,8 @@
 //
-//  PullToRefreshSwiftTests.swift
-//  PullToRefreshSwiftTests
+//  PullToRefreshConst.swift
+//  PullToRefreshSwift
 //
-//  Created by 波戸 勇二 on 12/8/14.
-//  Copyright (c) 2014 Yuji Hato. All rights reserved.
+//  Created by Yuji Hato on 12/11/14.
 //
 
 import UIKit

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PullToRefreshSwift/UIScrollViewExtension.swift"
+            timestampString = "439970218.237493"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "addPullToRefresh(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PullToRefreshSwift/PullToRefreshView.swift"
+            timestampString = "439970842.309164"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "observeValueForKeyPath(_:ofObject:change:context:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PullToRefreshSwift/PullToRefreshView.swift"
+            timestampString = "439970842.309164"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "observeValueForKeyPath(_:ofObject:change:context:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PullToRefreshSwift.PullToRefreshView.observeValueForKeyPath (PullToRefreshSwift.PullToRefreshView)(Swift.String, ofObject : Swift.AnyObject, change : Swift.Dictionary&lt;ObjectiveC.NSObject, Swift.AnyObject&gt;, context : Swift.UnsafeMutablePointer&lt;()&gt;) -&gt; ()"
+                  moduleName = "PullToRefreshSwift"
+                  urlString = "file:///Users/a12447/git/PullToRefreshSwift/PullToRefreshSwift/PullToRefreshView.swift"
+                  timestampString = "439898761.953537"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "67">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PullToRefreshSwift.PullToRefreshView.observeValueForKeyPath (PullToRefreshSwift.PullToRefreshView)(Swift.String, ofObject : Swift.AnyObject, change : Swift.Dictionary&lt;ObjectiveC.NSObject, Swift.AnyObject&gt;, context : Swift.UnsafeMutablePointer&lt;()&gt;) -&gt; ()"
+                  moduleName = "PullToRefreshSwift"
+                  urlString = "file:///Users/a12447/git/PullToRefreshSwift/PullToRefreshSwift/PullToRefreshView.swift"
+                  timestampString = "439898761.953705"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "452">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PullToRefreshSwift/PullToRefreshView.swift"
+            timestampString = "439970842.309164"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "PullToRefreshView"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PullToRefreshSwift/PullToRefreshView.swift"
+            timestampString = "439970842.309164"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "observeValueForKeyPath(_:ofObject:change:context:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PullToRefreshSwift/PullToRefreshView.swift"
+            timestampString = "439970842.309164"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "PullToRefreshView"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PullToRefreshSwift/PullToRefreshView.swift"
+            timestampString = "439970455.643849"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "PullToRefreshView"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PullToRefreshSwift.PullToRefreshView.init (PullToRefreshSwift.PullToRefreshView.Type)(frame : C.CGRect) -&gt; PullToRefreshSwift.PullToRefreshView"
+                  moduleName = "PullToRefreshSwift"
+                  urlString = "file:///Users/a12447/git/PullToRefreshSwift/PullToRefreshSwift/PullToRefreshView.swift"
+                  timestampString = "439952174.512058"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "124">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PullToRefreshSwift.PullToRefreshView.init (PullToRefreshSwift.PullToRefreshView.Type)(coder : ObjectiveC.NSCoder) -&gt; PullToRefreshSwift.PullToRefreshView"
+                  moduleName = "PullToRefreshSwift"
+                  urlString = "file:///Users/a12447/git/PullToRefreshSwift/PullToRefreshSwift/PullToRefreshView.swift"
+                  timestampString = "439952174.512319"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "89">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PullToRefreshSwift.PullToRefreshView.(scrollViewBouncesDefaultValue in _169EB416129D712EB029EC3ABE6151A8).getter : Swift.Bool"
+                  moduleName = "PullToRefreshSwift"
+                  urlString = "file:///Users/a12447/git/PullToRefreshSwift/PullToRefreshSwift/PullToRefreshView.swift"
+                  timestampString = "439952174.512467"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PullToRefreshSwift.PullToRefreshView.(scrollViewBouncesDefaultValue in _169EB416129D712EB029EC3ABE6151A8).setter : Swift.Bool"
+                  moduleName = "PullToRefreshSwift"
+                  urlString = "file:///Users/a12447/git/PullToRefreshSwift/PullToRefreshSwift/PullToRefreshView.swift"
+                  timestampString = "439952174.512589"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PullToRefreshSwift.PullToRefreshView.(scrollViewBouncesDefaultValue in _169EB416129D712EB029EC3ABE6151A8).materializeForSet : Swift.Bool"
+                  moduleName = "PullToRefreshSwift"
+                  urlString = "file:///Users/a12447/git/PullToRefreshSwift/PullToRefreshSwift/PullToRefreshView.swift"
+                  timestampString = "439952174.512767"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PullToRefreshSwift/PullToRefreshView.swift"
+            timestampString = "439970842.309164"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "observeValueForKeyPath(_:ofObject:change:context:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PullToRefreshSwift/PullToRefreshView.swift"
+            timestampString = "439970842.309164"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "willMoveToSuperview(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
