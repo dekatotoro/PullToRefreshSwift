@@ -14,10 +14,11 @@
 		C53BEC4A1A357BCA008A4302 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C53BEC491A357BCA008A4302 /* Images.xcassets */; };
 		C53BEC4D1A357BCA008A4302 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53BEC4B1A357BCA008A4302 /* LaunchScreen.xib */; };
 		C53BEC591A357BCA008A4302 /* PullToRefreshSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53BEC581A357BCA008A4302 /* PullToRefreshSwiftTests.swift */; };
-		C53BEC691A357C3C008A4302 /* PullToRefreshConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53BEC641A357C3C008A4302 /* PullToRefreshConst.swift */; };
-		C53BEC6A1A357C3C008A4302 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53BEC651A357C3C008A4302 /* PullToRefreshView.swift */; };
-		C53BEC6C1A357C3C008A4302 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53BEC671A357C3C008A4302 /* UIScrollViewExtension.swift */; };
 		C54F64521A39733E00518F38 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F64511A39733E00518F38 /* ArrayExtension.swift */; };
+		C54F64571A399BBD00518F38 /* pulltorefresharrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C54F64531A399BBD00518F38 /* pulltorefresharrow.png */; };
+		C54F64581A399BBD00518F38 /* PullToRefreshConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F64541A399BBD00518F38 /* PullToRefreshConst.swift */; };
+		C54F64591A399BBD00518F38 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F64551A399BBD00518F38 /* PullToRefreshView.swift */; };
+		C54F645A1A399BBD00518F38 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F64561A399BBD00518F38 /* UIScrollViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,10 +43,11 @@
 		C53BEC521A357BCA008A4302 /* PullToRefreshSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PullToRefreshSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C53BEC571A357BCA008A4302 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C53BEC581A357BCA008A4302 /* PullToRefreshSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshSwiftTests.swift; sourceTree = "<group>"; };
-		C53BEC641A357C3C008A4302 /* PullToRefreshConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshConst.swift; sourceTree = "<group>"; };
-		C53BEC651A357C3C008A4302 /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
-		C53BEC671A357C3C008A4302 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		C54F64511A39733E00518F38 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		C54F64531A399BBD00518F38 /* pulltorefresharrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pulltorefresharrow.png; path = PullToRefresh/pulltorefresharrow.png; sourceTree = "<group>"; };
+		C54F64541A399BBD00518F38 /* PullToRefreshConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullToRefreshConst.swift; path = PullToRefresh/PullToRefreshConst.swift; sourceTree = "<group>"; };
+		C54F64551A399BBD00518F38 /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullToRefreshView.swift; path = PullToRefresh/PullToRefreshView.swift; sourceTree = "<group>"; };
+		C54F64561A399BBD00518F38 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIScrollViewExtension.swift; path = PullToRefresh/UIScrollViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,9 +130,10 @@
 		C53BEC621A357C1B008A4302 /* PullToRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				C53BEC641A357C3C008A4302 /* PullToRefreshConst.swift */,
-				C53BEC651A357C3C008A4302 /* PullToRefreshView.swift */,
-				C53BEC671A357C3C008A4302 /* UIScrollViewExtension.swift */,
+				C54F64531A399BBD00518F38 /* pulltorefresharrow.png */,
+				C54F64541A399BBD00518F38 /* PullToRefreshConst.swift */,
+				C54F64551A399BBD00518F38 /* PullToRefreshView.swift */,
+				C54F64561A399BBD00518F38 /* UIScrollViewExtension.swift */,
 			);
 			name = PullToRefresh;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				C53BEC481A357BCA008A4302 /* Main.storyboard in Resources */,
 				C53BEC4D1A357BCA008A4302 /* LaunchScreen.xib in Resources */,
 				C53BEC4A1A357BCA008A4302 /* Images.xcassets in Resources */,
+				C54F64571A399BBD00518F38 /* pulltorefresharrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,13 +239,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C53BEC691A357C3C008A4302 /* PullToRefreshConst.swift in Sources */,
-				C53BEC6A1A357C3C008A4302 /* PullToRefreshView.swift in Sources */,
 				C53BEC451A357BCA008A4302 /* ViewController.swift in Sources */,
+				C54F64581A399BBD00518F38 /* PullToRefreshConst.swift in Sources */,
+				C54F64591A399BBD00518F38 /* PullToRefreshView.swift in Sources */,
 				C53BEC401A357BCA008A4302 /* AppDelegate.swift in Sources */,
 				C53BEC431A357BCA008A4302 /* PullToRefreshSwift.xcdatamodeld in Sources */,
 				C54F64521A39733E00518F38 /* ArrayExtension.swift in Sources */,
-				C53BEC6C1A357C3C008A4302 /* UIScrollViewExtension.swift in Sources */,
+				C54F645A1A399BBD00518F38 /* UIScrollViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

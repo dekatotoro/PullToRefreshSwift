@@ -18,10 +18,9 @@ public class PullToRefreshView: UIView {
     
     let contentOffsetKeyPath = "contentOffset"
     var kvoContext = ""
-    
-    private var statusLabel:UILabel!
-    private var arrow:UILabel!
-    private var indicator:UIActivityIndicatorView!
+
+    private var arrow: UIImageView!
+    private var indicator: UIActivityIndicatorView!
     private var scrollViewBounces: Bool = false
     private var scrollViewInsets: UIEdgeInsets = UIEdgeInsetsZero
     private var previousOffset: CGFloat = 0
@@ -58,21 +57,9 @@ public class PullToRefreshView: UIView {
         self.init(frame: frame)
         self.refreshCompletion = refreshCompletion;
         
-        self.statusLabel = UILabel(frame: bounds)
-        self.statusLabel.autoresizingMask = UIViewAutoresizing.FlexibleWidth
-        self.statusLabel.backgroundColor =  UIColor.clearColor()
-        self.statusLabel.textAlignment = NSTextAlignment.Center
-        self.statusLabel.textColor = PullToRefreshConst.textColor
-        self.statusLabel.font = PullToRefreshConst.font
-        self.statusLabel.text = PullToRefreshConst.normalText
-        self.addSubview(statusLabel)
-        
-        self.arrow = UILabel(frame: CGRectMake(0, 0, 30, 30))
-        self.arrow.text = "↓"
-        self.arrow.textColor = PullToRefreshConst.arrowColor
-        self.arrow.font = UIFont.boldSystemFontOfSize(24)
-        self.arrow.textAlignment = NSTextAlignment.Center
+        self.arrow = UIImageView(frame: CGRectMake(0, 0, 30, 30))
         self.arrow.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin |  UIViewAutoresizing.FlexibleRightMargin
+        self.arrow.image = UIImage(named: PullToRefreshConst.imageName)
         self.addSubview(arrow)
         
         self.indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
@@ -88,8 +75,7 @@ public class PullToRefreshView: UIView {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-        let arrowX:CGFloat = self.frame.size.width / 2 - CGFloat(PullToRefreshConst.textLeftMargin)
-        self.arrow.center = CGPointMake(arrowX, self.frame.size.height / 2)
+        self.arrow.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2)
         self.indicator.center = self.arrow.center
     }
     
@@ -113,22 +99,22 @@ public class PullToRefreshView: UIView {
         
         if (context == &kvoContext && keyPath == contentOffsetKeyPath) {
             if let scrollView = object as? UIScrollView {
-                println(scrollView.contentOffset.y)
+                
+                // Debug
+                //println(scrollView.contentOffset.y)
+                
                 var offsetWithoutInsets = self.previousOffset + self.scrollViewInsets.top
                 if (offsetWithoutInsets < -self.frame.size.height) {
                     
                     // pulling or refreshing
                     if (scrollView.dragging == false && self.state != .Refreshing) {
-                        self.statusLabel.text = PullToRefreshConst.refreshingText
                         self.state = .Refreshing
                     } else if (self.state != .Refreshing) {
-                        self.statusLabel.text = PullToRefreshConst.pullingText
                         self.arrow.transform = CGAffineTransformMakeRotation(CGFloat(M_PI ))
                         self.state = .Pulling
                     }
                 } else if (self.state != .Refreshing && offsetWithoutInsets < 0) {
                     // normal
-                    self.statusLabel.text = PullToRefreshConst.normalText
                     self.arrow.transform = CGAffineTransformIdentity
                     self.state == .Normal
                 }
@@ -144,10 +130,10 @@ public class PullToRefreshView: UIView {
     private func startAnimating() {
         self.indicator.startAnimating()
         self.arrow.hidden = true
+        
         var scrollView = superview as UIScrollView
         var insets = scrollView.contentInset
         insets.top += self.frame.size.height
-        
         scrollView.contentOffset.y = self.previousOffset
         scrollView.bounces = false
         UIView.animateWithDuration(PullToRefreshConst.duration, delay: 0, options:nil, animations: {
@@ -161,9 +147,9 @@ public class PullToRefreshView: UIView {
     
     private func stopAnimating() {
         self.indicator.stopAnimating()
-        self.statusLabel.text = PullToRefreshConst.normalText
         self.arrow.transform = CGAffineTransformIdentity
         self.arrow.hidden = false
+        
         var scrollView = superview as UIScrollView
         scrollView.bounces = self.scrollViewBounces
         UIView.animateWithDuration(PullToRefreshConst.duration, animations: { () -> Void in
