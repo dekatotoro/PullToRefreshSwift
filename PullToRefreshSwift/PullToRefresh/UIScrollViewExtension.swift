@@ -18,11 +18,11 @@ extension UIScrollView {
 
     func addPullToRefresh(refreshCompletion :(() -> ())) {
 
-        var pullToRefreshView = PullToRefreshView(refreshCompletion: refreshCompletion, frame: CGRectMake(0, -PullToRefreshConst.height, self.frame.size.width, PullToRefreshConst.height))
-        pullToRefreshView.frame = CGRectMake(0, -PullToRefreshConst.height, self.frame.size.width, PullToRefreshConst.height)
-        pullToRefreshView.refreshCompletion = refreshCompletion
-        pullToRefreshView.tag = PullToRefreshConst.tag
-        addSubview(pullToRefreshView)
+        var refreshView = PullToRefreshView(refreshCompletion: refreshCompletion, frame: CGRectMake(0, -PullToRefreshConst.height, self.frame.size.width, PullToRefreshConst.height))
+        refreshView.frame = CGRectMake(0, -PullToRefreshConst.height, self.frame.size.width, PullToRefreshConst.height)
+        refreshView.refreshCompletion = refreshCompletion
+        refreshView.tag = PullToRefreshConst.tag
+        addSubview(refreshView)
     }
     
 
