@@ -28,6 +28,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.texts.shuffle()
             self.tableView.reloadData()
             self.tableView.stopPullToRefresh()
+            println("Completed")
         })
     }
     
