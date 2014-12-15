@@ -6,16 +6,14 @@
 //
 import UIKit
 
-enum PullToRefreshState {
-    case Normal
-    case Pulling
-    case Refreshing
-}
-
 public class PullToRefreshView: UIView {
-
-    // MARK: Variables
+    enum PullToRefreshState {
+        case Normal
+        case Pulling
+        case Refreshing
+    }
     
+    // MARK: Variables
     let contentOffsetKeyPath = "contentOffset"
     var kvoContext = ""
 
@@ -24,19 +22,15 @@ public class PullToRefreshView: UIView {
     private var scrollViewBounces: Bool = false
     private var scrollViewInsets: UIEdgeInsets = UIEdgeInsetsZero
     private var previousOffset: CGFloat = 0
+    private var refreshCompletion: (() -> ()) = {}
     
-    var refreshCompletion: (() -> ()) = {}
     var state: PullToRefreshState = PullToRefreshState.Normal {
         didSet {
             switch self.state {
             case .Normal:
                 stopAnimating()
-                break
-            case .Pulling:
-                break
             case .Refreshing:
                 startAnimating()
-                break
             default:
                 break
             }
@@ -44,7 +38,6 @@ public class PullToRefreshView: UIView {
     }
     
     // MARK: UIView
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -70,9 +63,8 @@ public class PullToRefreshView: UIView {
         
         self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         self.backgroundColor = PullToRefreshConst.backgroundColor
-        
     }
-    
+   
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.arrow.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2)
@@ -158,6 +150,4 @@ public class PullToRefreshView: UIView {
 
         }
     }
-    
-    
 }
