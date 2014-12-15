@@ -8,8 +8,8 @@ import Foundation
 import UIKit
 
 extension UIScrollView {
-    
-    var pullToRefreshView: PullToRefreshView? {
+
+    private var pullToRefreshView: PullToRefreshView? {
         get {
             var pullToRefreshView = viewWithTag(PullToRefreshConst.tag)
             return pullToRefreshView as? PullToRefreshView
@@ -24,10 +24,10 @@ extension UIScrollView {
     }
 
     func startPullToRefresh() {
-        pullToRefreshView?.state = PullToRefreshState.Refreshing
+        pullToRefreshView?.state = .Refreshing
     }
     
     func stopPullToRefresh() {
-        pullToRefreshView?.state = PullToRefreshState.Normal
+        pullToRefreshView?.state = .Normal
     }
 }

@@ -6,14 +6,13 @@
 //
 import UIKit
 
-enum PullToRefreshState {
-    case Normal
-    case Pulling
-    case Refreshing
-}
-
 public class PullToRefreshView: UIView {
-
+    enum PullToRefreshState {
+        case Normal
+        case Pulling
+        case Refreshing
+    }
+    
     // MARK: Variables
     let contentOffsetKeyPath = "contentOffset"
     var kvoContext = ""
@@ -65,7 +64,7 @@ public class PullToRefreshView: UIView {
         self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         self.backgroundColor = PullToRefreshConst.backgroundColor
     }
-    
+   
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.arrow.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2)
@@ -151,6 +150,4 @@ public class PullToRefreshView: UIView {
 
         }
     }
-    
-    
 }
