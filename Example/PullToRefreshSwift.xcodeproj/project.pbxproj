@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C37CA2B1A3E815D00B3EFD4 /* pulltorefresharrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C37CA271A3E815D00B3EFD4 /* pulltorefresharrow.png */; };
+		8C37CA2C1A3E815D00B3EFD4 /* PullToRefreshConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C37CA281A3E815D00B3EFD4 /* PullToRefreshConst.swift */; };
+		8C37CA2D1A3E815D00B3EFD4 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C37CA291A3E815D00B3EFD4 /* PullToRefreshView.swift */; };
+		8C37CA2E1A3E815D00B3EFD4 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C37CA2A1A3E815D00B3EFD4 /* UIScrollViewExtension.swift */; };
 		C53BEC401A357BCA008A4302 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53BEC3F1A357BCA008A4302 /* AppDelegate.swift */; };
 		C53BEC431A357BCA008A4302 /* PullToRefreshSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C53BEC411A357BCA008A4302 /* PullToRefreshSwift.xcdatamodeld */; };
 		C53BEC451A357BCA008A4302 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53BEC441A357BCA008A4302 /* ViewController.swift */; };
@@ -15,10 +19,6 @@
 		C53BEC4D1A357BCA008A4302 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53BEC4B1A357BCA008A4302 /* LaunchScreen.xib */; };
 		C53BEC591A357BCA008A4302 /* PullToRefreshSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53BEC581A357BCA008A4302 /* PullToRefreshSwiftTests.swift */; };
 		C54F64521A39733E00518F38 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F64511A39733E00518F38 /* ArrayExtension.swift */; };
-		C54F64571A399BBD00518F38 /* pulltorefresharrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C54F64531A399BBD00518F38 /* pulltorefresharrow.png */; };
-		C54F64581A399BBD00518F38 /* PullToRefreshConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F64541A399BBD00518F38 /* PullToRefreshConst.swift */; };
-		C54F64591A399BBD00518F38 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F64551A399BBD00518F38 /* PullToRefreshView.swift */; };
-		C54F645A1A399BBD00518F38 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F64561A399BBD00518F38 /* UIScrollViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +32,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C37CA271A3E815D00B3EFD4 /* pulltorefresharrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pulltorefresharrow.png; sourceTree = "<group>"; };
+		8C37CA281A3E815D00B3EFD4 /* PullToRefreshConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshConst.swift; sourceTree = "<group>"; };
+		8C37CA291A3E815D00B3EFD4 /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
+		8C37CA2A1A3E815D00B3EFD4 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		C53BEC3A1A357BCA008A4302 /* PullToRefreshSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PullToRefreshSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C53BEC3E1A357BCA008A4302 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C53BEC3F1A357BCA008A4302 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,10 +48,6 @@
 		C53BEC571A357BCA008A4302 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C53BEC581A357BCA008A4302 /* PullToRefreshSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshSwiftTests.swift; sourceTree = "<group>"; };
 		C54F64511A39733E00518F38 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
-		C54F64531A399BBD00518F38 /* pulltorefresharrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pulltorefresharrow.png; path = PullToRefresh/pulltorefresharrow.png; sourceTree = "<group>"; };
-		C54F64541A399BBD00518F38 /* PullToRefreshConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullToRefreshConst.swift; path = PullToRefresh/PullToRefreshConst.swift; sourceTree = "<group>"; };
-		C54F64551A399BBD00518F38 /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullToRefreshView.swift; path = PullToRefresh/PullToRefreshView.swift; sourceTree = "<group>"; };
-		C54F64561A399BBD00518F38 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIScrollViewExtension.swift; path = PullToRefresh/UIScrollViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +68,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C37CA261A3E815D00B3EFD4 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				8C37CA271A3E815D00B3EFD4 /* pulltorefresharrow.png */,
+				8C37CA281A3E815D00B3EFD4 /* PullToRefreshConst.swift */,
+				8C37CA291A3E815D00B3EFD4 /* PullToRefreshView.swift */,
+				8C37CA2A1A3E815D00B3EFD4 /* UIScrollViewExtension.swift */,
+			);
+			name = Source;
+			path = ../../Source;
+			sourceTree = "<group>";
+		};
 		C53BEC311A357BC9008A4302 = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +101,7 @@
 		C53BEC3C1A357BCA008A4302 /* PullToRefreshSwift */ = {
 			isa = PBXGroup;
 			children = (
-				C53BEC621A357C1B008A4302 /* PullToRefresh */,
+				8C37CA261A3E815D00B3EFD4 /* Source */,
 				C53BEC3F1A357BCA008A4302 /* AppDelegate.swift */,
 				C53BEC441A357BCA008A4302 /* ViewController.swift */,
 				C54F64511A39733E00518F38 /* ArrayExtension.swift */,
@@ -125,17 +137,6 @@
 				C53BEC571A357BCA008A4302 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C53BEC621A357C1B008A4302 /* PullToRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				C54F64531A399BBD00518F38 /* pulltorefresharrow.png */,
-				C54F64541A399BBD00518F38 /* PullToRefreshConst.swift */,
-				C54F64551A399BBD00518F38 /* PullToRefreshView.swift */,
-				C54F64561A399BBD00518F38 /* UIScrollViewExtension.swift */,
-			);
-			name = PullToRefresh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,7 +222,7 @@
 				C53BEC481A357BCA008A4302 /* Main.storyboard in Resources */,
 				C53BEC4D1A357BCA008A4302 /* LaunchScreen.xib in Resources */,
 				C53BEC4A1A357BCA008A4302 /* Images.xcassets in Resources */,
-				C54F64571A399BBD00518F38 /* pulltorefresharrow.png in Resources */,
+				8C37CA2B1A3E815D00B3EFD4 /* pulltorefresharrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,12 +241,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C53BEC451A357BCA008A4302 /* ViewController.swift in Sources */,
-				C54F64581A399BBD00518F38 /* PullToRefreshConst.swift in Sources */,
-				C54F64591A399BBD00518F38 /* PullToRefreshView.swift in Sources */,
+				8C37CA2C1A3E815D00B3EFD4 /* PullToRefreshConst.swift in Sources */,
+				8C37CA2D1A3E815D00B3EFD4 /* PullToRefreshView.swift in Sources */,
 				C53BEC401A357BCA008A4302 /* AppDelegate.swift in Sources */,
 				C53BEC431A357BCA008A4302 /* PullToRefreshSwift.xcdatamodeld in Sources */,
 				C54F64521A39733E00518F38 /* ArrayExtension.swift in Sources */,
-				C54F645A1A399BBD00518F38 /* UIScrollViewExtension.swift in Sources */,
+				8C37CA2E1A3E815D00B3EFD4 /* UIScrollViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
