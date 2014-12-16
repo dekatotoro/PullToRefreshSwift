@@ -102,12 +102,12 @@ public class PullToRefreshView: UIView {
                     if (scrollView.dragging == false && self.state != .Refreshing) {
                         self.state = .Refreshing
                     } else if (self.state != .Refreshing) {
-                        self.arrow.transform = CGAffineTransformMakeRotation(CGFloat(M_PI ))
+                        self.arrowRotation()
                         self.state = .Pulling
                     }
                 } else if (self.state != .Refreshing && offsetWithoutInsets < 0) {
                     // normal
-                    self.arrow.transform = CGAffineTransformIdentity
+                    self.arrowRotationBack()
                     self.state == .Normal
                 }
                 self.previousOffset = scrollView.contentOffset.y
@@ -149,5 +149,18 @@ public class PullToRefreshView: UIView {
         }) { (Bool) -> Void in
 
         }
+    }
+    
+    private func arrowRotation() {
+        UIView.animateWithDuration(0.2, delay: 0, options:nil, animations: {
+            // -0.0000001 for the rotation direction control
+            self.arrow.transform = CGAffineTransformMakeRotation(CGFloat(M_PI-0.0000001))
+            }, nil)
+    }
+    
+    private func arrowRotationBack() {
+        UIView.animateWithDuration(0.2, delay: 0, options:nil, animations: {
+            self.arrow.transform = CGAffineTransformIdentity
+            }, nil)
     }
 }
