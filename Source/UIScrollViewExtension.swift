@@ -32,7 +32,7 @@ extension UIScrollView {
     }
     
     // If you want to PullToRefreshView fixed top potision, Please call this function in scrollViewDidScroll
-    func fixedPullToRefreshViewForDidScroll(scrollViewDidScroll: UIScrollView) {
+    func fixedPullToRefreshViewForDidScroll() {
         if self.contentOffset.y < -PullToRefreshConst.height {
             if var frame = pullToRefreshView?.frame {
                 frame.origin.y = self.contentOffset.y

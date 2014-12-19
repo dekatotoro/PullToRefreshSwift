@@ -49,7 +49,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        self.tableView.fixedPullToRefreshViewForDidScroll(scrollView)
+        self.tableView.fixedPullToRefreshViewForDidScroll()
     }
 }
 
