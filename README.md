@@ -34,7 +34,6 @@ Add the following files to your project.
 ###Setup
 
 In your UIViewController Including UITableView, UICollectionView, UIScrollView:
-
 ```swift
   override func viewDidLoad() {
         self.tableView.addPullToRefresh({ () -> () in
@@ -44,6 +43,13 @@ In your UIViewController Including UITableView, UICollectionView, UIScrollView:
             self.tableView.stopPullToRefresh()
         })
   }
+```
+
+Please implement scrollViewDidScroll If you want to fixed pulltoRefresh.
+```swift
+  func scrollViewDidScroll(scrollView: UIScrollView) {
+    self.tableView.fixedPullToRefreshViewForDidScroll()
+  }  
 ```
 
 If you want to use the custom option, please change the PullToRefreshConst class.
