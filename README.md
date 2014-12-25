@@ -44,14 +44,14 @@ In your UIViewController Including UITableView, UICollectionView, UIScrollView:
         })
   }
 ```
-
-Please implement scrollViewDidScroll If you want to fixed pulltoRefresh.
+  
+If you want to fixed pulltoRefreshView, please implement scrollViewDidScroll.
 ```swift
   func scrollViewDidScroll(scrollView: UIScrollView) {
     self.tableView.fixedPullToRefreshViewForDidScroll()
   }  
 ```
-
+  
 If you want to use the custom option, please change the PullToRefreshConst class.
 
 ```swift
