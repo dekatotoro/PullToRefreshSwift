@@ -12,4 +12,5 @@ struct PullToRefreshConst {
     static let height: CGFloat = 80
     static let duration: Double = 0.5
     static let tag = 810
+    static let alpha = true
 }
