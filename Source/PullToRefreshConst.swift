@@ -11,6 +11,7 @@ struct PullToRefreshConst {
     static let imageName: String = "pulltorefresharrow.png"
     static let height: CGFloat = 80
     static let duration: Double = 0.5
-    static let tag = 810
+    static let fixedTop = false
     static let alpha = true
+    static let tag = 810
 }

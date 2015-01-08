@@ -16,7 +16,8 @@ public class PullToRefreshView: UIView {
     // MARK: Variables
     let contentOffsetKeyPath = "contentOffset"
     var kvoContext = ""
-
+    
+    private var backgroundView: UIView!
     private var arrow: UIImageView!
     private var indicator: UIActivityIndicatorView!
     private var scrollViewBounces: Bool = false
@@ -49,6 +50,11 @@ public class PullToRefreshView: UIView {
     convenience init(refreshCompletion :(() -> ()), frame: CGRect) {
         self.init(frame: frame)
         self.refreshCompletion = refreshCompletion;
+
+        self.backgroundView = UIView(frame: CGRectMake(0, 0, frame.size.width, frame.size.height))
+        self.backgroundView.backgroundColor = PullToRefreshConst.backgroundColor
+        self.backgroundView.autoresizingMask = UIViewAutoresizing.FlexibleWidth
+        self.addSubview(backgroundView)
         
         self.arrow = UIImageView(frame: CGRectMake(0, 0, 30, 30))
         self.arrow.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin |  UIViewAutoresizing.FlexibleRightMargin
@@ -62,7 +68,7 @@ public class PullToRefreshView: UIView {
         self.addSubview(indicator)
         
         self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
-        self.backgroundColor = PullToRefreshConst.backgroundColor
+//        self.backgroundColor = PullToRefreshConst.backgroundColor
     }
    
     public override func layoutSubviews() {
@@ -94,16 +100,29 @@ public class PullToRefreshView: UIView {
                 
                 // Debug
                 //println(scrollView.contentOffset.y)
-                
+
+                // Alpha set
                 if PullToRefreshConst.alpha {
-                    var alpha = fabs(scrollView.contentOffset.y) / (self.frame.size.height + self.frame.size.height / 2);
-                    if (alpha > 0.9) {
-                        alpha = 0.9;
+                    var alpha = fabs(scrollView.contentOffset.y) / (self.frame.size.height + 30)
+                    if alpha > 0.9 {
+                        alpha = 0.9
                     }
-                    
-                    self.alpha = alpha
+                    self.arrow.alpha = alpha
+                }
+
+                // Backgroundview frame set
+                if PullToRefreshConst.fixedTop {
+                    if PullToRefreshConst.height < fabs(scrollView.contentOffset.y) {
+                        self.backgroundView.frame.size.height = fabs(scrollView.contentOffset.y)
+                    } else {
+                        self.backgroundView.frame.size.height =  PullToRefreshConst.height
+                    }
+                } else {
+                    self.backgroundView.frame.size.height = PullToRefreshConst.height + fabs(scrollView.contentOffset.y)
+                    self.backgroundView.frame.origin.y = -fabs(scrollView.contentOffset.y)
                 }
                 
+                // Pulling State Check
                 var offsetWithoutInsets = self.previousOffset + self.scrollViewInsets.top
                 if (offsetWithoutInsets < -self.frame.size.height) {
                     
