@@ -83,6 +83,9 @@ public class PullToRefreshView: UIView {
             superView.addObserver(self, forKeyPath: contentOffsetKeyPath, options: .Initial, context: &kvoContext)
             scrollViewBounces = (superView as UIScrollView).bounces
             scrollViewInsets = (superView as UIScrollView).contentInset
+            
+            println((superView as UIScrollView).contentOffset.y)
+            println((superView as UIScrollView).contentInset.top)
         }
     }
     
@@ -100,30 +103,31 @@ public class PullToRefreshView: UIView {
                 
                 // Debug
                 //println(scrollView.contentOffset.y)
-
+                
+                var offsetWithoutInsets = self.previousOffset + self.scrollViewInsets.top
+                println(offsetWithoutInsets)
                 // Alpha set
                 if PullToRefreshConst.alpha {
-                    var alpha = fabs(scrollView.contentOffset.y) / (self.frame.size.height + 30)
+                    var alpha = fabs(offsetWithoutInsets) / (self.frame.size.height + 30)
                     if alpha > 0.9 {
                         alpha = 0.9
                     }
                     self.arrow.alpha = alpha
                 }
-
+                
                 // Backgroundview frame set
                 if PullToRefreshConst.fixedTop {
-                    if PullToRefreshConst.height < fabs(scrollView.contentOffset.y) {
-                        self.backgroundView.frame.size.height = fabs(scrollView.contentOffset.y)
+                    if PullToRefreshConst.height < fabs(offsetWithoutInsets) {
+                        self.backgroundView.frame.size.height = fabs(offsetWithoutInsets)
                     } else {
                         self.backgroundView.frame.size.height =  PullToRefreshConst.height
                     }
                 } else {
-                    self.backgroundView.frame.size.height = PullToRefreshConst.height + fabs(scrollView.contentOffset.y)
-                    self.backgroundView.frame.origin.y = -fabs(scrollView.contentOffset.y)
+                    self.backgroundView.frame.size.height = PullToRefreshConst.height + fabs(offsetWithoutInsets)
+                    self.backgroundView.frame.origin.y = -fabs(offsetWithoutInsets)
                 }
                 
                 // Pulling State Check
-                var offsetWithoutInsets = self.previousOffset + self.scrollViewInsets.top
                 if (offsetWithoutInsets < -self.frame.size.height) {
                     
                     // pulling or refreshing
