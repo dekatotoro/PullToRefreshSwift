@@ -140,7 +140,6 @@ public class PullToRefreshView: UIView {
                 } else if (self.state != .Refreshing && offsetWithoutInsets < 0) {
                     // normal
                     self.arrowRotationBack()
-                    self.state == .Normal
                 }
                 self.previousOffset = scrollView.contentOffset.y
             }
@@ -160,12 +159,17 @@ public class PullToRefreshView: UIView {
         insets.top += self.frame.size.height
         scrollView.contentOffset.y = self.previousOffset
         scrollView.bounces = false
-        UIView.animateWithDuration(PullToRefreshConst.duration, delay: 0, options:nil, animations: {
+        UIView.animateWithDuration(PullToRefreshConst.animationDuration, delay: 0, options:nil, animations: {
             scrollView.contentInset = insets
             scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, -insets.top)
         }, completion: {finished in
-                self.state = .Normal
-                self.refreshCompletion()
+            if PullToRefreshConst.autoStop {
+                let time = dispatch_time(DISPATCH_TIME_NOW, Int64(PullToRefreshConst.autoStopDuration * Double(NSEC_PER_SEC)))
+                dispatch_after(time, dispatch_get_main_queue()) {
+                    self.state = .Normal
+                }
+            }
+            self.refreshCompletion()
         })
     }
     
@@ -176,7 +180,7 @@ public class PullToRefreshView: UIView {
         
         var scrollView = superview as UIScrollView
         scrollView.bounces = self.scrollViewBounces
-        UIView.animateWithDuration(PullToRefreshConst.duration, animations: { () -> Void in
+        UIView.animateWithDuration(PullToRefreshConst.animationDuration, animations: { () -> Void in
             scrollView.contentInset = self.scrollViewInsets
         }) { (Bool) -> Void in
 
