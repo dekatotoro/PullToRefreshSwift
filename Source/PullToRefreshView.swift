@@ -106,6 +106,14 @@ public class PullToRefreshView: UIView {
                 
                 var offsetWithoutInsets = self.previousOffset + self.scrollViewInsets.top
                 
+                // Update the content inset for fixed section headers
+                if PullToRefreshConst.fixedSectionHeader && self.state == .Refreshing {
+                    if (scrollView.contentOffset.y > 0) {
+                        scrollView.contentInset = UIEdgeInsetsZero;
+                    }
+                    return
+                }
+                
                 // Alpha set
                 if PullToRefreshConst.alpha {
                     var alpha = fabs(offsetWithoutInsets) / (self.frame.size.height + 30)
@@ -161,7 +169,7 @@ public class PullToRefreshView: UIView {
         scrollView.bounces = false
         UIView.animateWithDuration(PullToRefreshConst.animationDuration, delay: 0, options:nil, animations: {
             scrollView.contentInset = insets
-            scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, -insets.top)
+            //scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, -insets.top)
         }, completion: {finished in
             if PullToRefreshConst.autoStop {
                 let time = dispatch_time(DISPATCH_TIME_NOW, Int64(PullToRefreshConst.autoStopDuration * Double(NSEC_PER_SEC)))

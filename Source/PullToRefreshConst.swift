@@ -14,6 +14,7 @@ struct PullToRefreshConst {
     static let autoStop = true
     static let autoStopDuration: Double = 1.0
     static let fixedTop = false
+    static let fixedSectionHeader = false
     static let alpha = true
     static let tag = 810
 }
