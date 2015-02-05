@@ -68,7 +68,6 @@ public class PullToRefreshView: UIView {
         self.addSubview(indicator)
         
         self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
-//        self.backgroundColor = PullToRefreshConst.backgroundColor
     }
    
     public override func layoutSubviews() {
@@ -78,20 +77,20 @@ public class PullToRefreshView: UIView {
     }
     
     public override func willMoveToSuperview(superView: UIView!) {
+        
         superview?.removeObserver(self, forKeyPath: contentOffsetKeyPath, context: &kvoContext)
-        if (superView != nil && superView is UIScrollView) {
-            superView.addObserver(self, forKeyPath: contentOffsetKeyPath, options: .Initial, context: &kvoContext)
-            scrollViewBounces = (superView as UIScrollView).bounces
-            scrollViewInsets = (superView as UIScrollView).contentInset
-            
-            println((superView as UIScrollView).contentOffset.y)
-            println((superView as UIScrollView).contentInset.top)
+        
+        if let scrollView = superView as? UIScrollView {
+            scrollView.addObserver(self, forKeyPath: contentOffsetKeyPath, options: .Initial, context: &kvoContext)
+            scrollViewBounces = scrollView.bounces
+            scrollViewInsets = scrollView.contentInset
         }
     }
     
     deinit {
-        var scrollView = superview as? UIScrollView
-        scrollView?.removeObserver(self, forKeyPath: contentOffsetKeyPath, context: &kvoContext)
+        if let scrollView = superview as? UIScrollView {
+            scrollView.removeObserver(self, forKeyPath: contentOffsetKeyPath, context: &kvoContext)
+        }
     }
     
     // MARK: KVO
@@ -162,23 +161,24 @@ public class PullToRefreshView: UIView {
         self.indicator.startAnimating()
         self.arrow.hidden = true
         
-        var scrollView = superview as UIScrollView
-        var insets = scrollView.contentInset
-        insets.top += self.frame.size.height
-        scrollView.contentOffset.y = self.previousOffset
-        scrollView.bounces = false
-        UIView.animateWithDuration(PullToRefreshConst.animationDuration, delay: 0, options:nil, animations: {
-            scrollView.contentInset = insets
-            //scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, -insets.top)
-        }, completion: {finished in
-            if PullToRefreshConst.autoStop {
-                let time = dispatch_time(DISPATCH_TIME_NOW, Int64(PullToRefreshConst.autoStopDuration * Double(NSEC_PER_SEC)))
-                dispatch_after(time, dispatch_get_main_queue()) {
-                    self.state = .Normal
-                }
-            }
-            self.refreshCompletion()
-        })
+        if let scrollView = superview as? UIScrollView {
+            var insets = scrollView.contentInset
+            insets.top += self.frame.size.height
+            scrollView.contentOffset.y = self.previousOffset
+            scrollView.bounces = false
+            UIView.animateWithDuration(PullToRefreshConst.animationDuration, delay: 0, options:nil, animations: {
+                scrollView.contentInset = insets
+                //scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, -insets.top)
+                }, completion: {finished in
+                    if PullToRefreshConst.autoStop {
+                        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(PullToRefreshConst.autoStopDuration * Double(NSEC_PER_SEC)))
+                        dispatch_after(time, dispatch_get_main_queue()) {
+                            self.state = .Normal
+                        }
+                    }
+                    self.refreshCompletion()
+            })
+        }
     }
     
     private func stopAnimating() {
@@ -186,12 +186,13 @@ public class PullToRefreshView: UIView {
         self.arrow.transform = CGAffineTransformIdentity
         self.arrow.hidden = false
         
-        var scrollView = superview as UIScrollView
-        scrollView.bounces = self.scrollViewBounces
-        UIView.animateWithDuration(PullToRefreshConst.animationDuration, animations: { () -> Void in
-            scrollView.contentInset = self.scrollViewInsets
-        }) { (Bool) -> Void in
-
+        if let scrollView = superview as? UIScrollView {
+            scrollView.bounces = self.scrollViewBounces
+            UIView.animateWithDuration(PullToRefreshConst.animationDuration, animations: { () -> Void in
+                scrollView.contentInset = self.scrollViewInsets
+                }) { (Bool) -> Void in
+                    
+            }
         }
     }
     
