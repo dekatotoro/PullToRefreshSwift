@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C37CA2B1A3E815D00B3EFD4 /* pulltorefresharrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C37CA271A3E815D00B3EFD4 /* pulltorefresharrow.png */; };
-		8C37CA2C1A3E815D00B3EFD4 /* PullToRefreshConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C37CA281A3E815D00B3EFD4 /* PullToRefreshConst.swift */; };
+		8C37CA2C1A3E815D00B3EFD4 /* PullToRefreshOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C37CA281A3E815D00B3EFD4 /* PullToRefreshOption.swift */; };
 		8C37CA2D1A3E815D00B3EFD4 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C37CA291A3E815D00B3EFD4 /* PullToRefreshView.swift */; };
 		8C37CA2E1A3E815D00B3EFD4 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C37CA2A1A3E815D00B3EFD4 /* UIScrollViewExtension.swift */; };
 		C53BEC401A357BCA008A4302 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53BEC3F1A357BCA008A4302 /* AppDelegate.swift */; };
@@ -33,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		8C37CA271A3E815D00B3EFD4 /* pulltorefresharrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pulltorefresharrow.png; sourceTree = "<group>"; };
-		8C37CA281A3E815D00B3EFD4 /* PullToRefreshConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshConst.swift; sourceTree = "<group>"; };
+		8C37CA281A3E815D00B3EFD4 /* PullToRefreshOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshOption.swift; sourceTree = "<group>"; };
 		8C37CA291A3E815D00B3EFD4 /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
 		8C37CA2A1A3E815D00B3EFD4 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		C53BEC3A1A357BCA008A4302 /* PullToRefreshSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PullToRefreshSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,7 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				8C37CA271A3E815D00B3EFD4 /* pulltorefresharrow.png */,
-				8C37CA281A3E815D00B3EFD4 /* PullToRefreshConst.swift */,
+				8C37CA281A3E815D00B3EFD4 /* PullToRefreshOption.swift */,
 				8C37CA291A3E815D00B3EFD4 /* PullToRefreshView.swift */,
 				8C37CA2A1A3E815D00B3EFD4 /* UIScrollViewExtension.swift */,
 			);
@@ -241,7 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C53BEC451A357BCA008A4302 /* ViewController.swift in Sources */,
-				8C37CA2C1A3E815D00B3EFD4 /* PullToRefreshConst.swift in Sources */,
+				8C37CA2C1A3E815D00B3EFD4 /* PullToRefreshOption.swift in Sources */,
 				8C37CA2D1A3E815D00B3EFD4 /* PullToRefreshView.swift in Sources */,
 				C53BEC401A357BCA008A4302 /* AppDelegate.swift in Sources */,
 				C53BEC431A357BCA008A4302 /* PullToRefreshSwift.xcdatamodeld in Sources */,

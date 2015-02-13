@@ -8,7 +8,7 @@ import Foundation
 import UIKit
 
 extension UIScrollView {
-
+    
     private var pullToRefreshView: PullToRefreshView? {
         get {
             var pullToRefreshView = viewWithTag(PullToRefreshConst.tag)
@@ -16,9 +16,9 @@ extension UIScrollView {
         }
     }
 
-    func addPullToRefresh(refreshCompletion :(() -> ())) {
+    func addPullToRefresh(options: PullToRefreshOption = PullToRefreshOption(), refreshCompletion :(() -> ())) {
         let refreshViewFrame = CGRectMake(0, -PullToRefreshConst.height, self.frame.size.width, PullToRefreshConst.height)
-        var refreshView = PullToRefreshView(refreshCompletion: refreshCompletion, frame: refreshViewFrame)
+        var refreshView = PullToRefreshView(options: options, frame: refreshViewFrame, refreshCompletion: refreshCompletion)
         refreshView.tag = PullToRefreshConst.tag
         addSubview(refreshView)
     }

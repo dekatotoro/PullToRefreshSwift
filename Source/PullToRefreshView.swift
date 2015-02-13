@@ -17,6 +17,7 @@ public class PullToRefreshView: UIView {
     let contentOffsetKeyPath = "contentOffset"
     var kvoContext = ""
     
+    private var options: PullToRefreshOption!
     private var backgroundView: UIView!
     private var arrow: UIImageView!
     private var indicator: UIActivityIndicatorView!
@@ -47,12 +48,13 @@ public class PullToRefreshView: UIView {
         super.init(coder: aDecoder)
     }
     
-    convenience init(refreshCompletion :(() -> ()), frame: CGRect) {
+    convenience init(options: PullToRefreshOption, frame: CGRect, refreshCompletion :(() -> ())) {
         self.init(frame: frame)
-        self.refreshCompletion = refreshCompletion;
+        self.options = options
+        self.refreshCompletion = refreshCompletion
 
         self.backgroundView = UIView(frame: CGRectMake(0, 0, frame.size.width, frame.size.height))
-        self.backgroundView.backgroundColor = PullToRefreshConst.backgroundColor
+        self.backgroundView.backgroundColor = self.options.backgroundColor
         self.backgroundView.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         self.addSubview(backgroundView)
         
@@ -65,6 +67,7 @@ public class PullToRefreshView: UIView {
         self.indicator.bounds = self.arrow.bounds
         self.indicator.autoresizingMask = self.arrow.autoresizingMask
         self.indicator.hidesWhenStopped = true
+        self.indicator.color = options.indicatorColor
         self.addSubview(indicator)
         
         self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
@@ -106,7 +109,7 @@ public class PullToRefreshView: UIView {
                 var offsetWithoutInsets = self.previousOffset + self.scrollViewInsets.top
                 
                 // Update the content inset for fixed section headers
-                if PullToRefreshConst.fixedSectionHeader && self.state == .Refreshing {
+                if self.options.fixedSectionHeader && self.state == .Refreshing {
                     if (scrollView.contentOffset.y > 0) {
                         scrollView.contentInset = UIEdgeInsetsZero;
                     }
@@ -116,8 +119,8 @@ public class PullToRefreshView: UIView {
                 // Alpha set
                 if PullToRefreshConst.alpha {
                     var alpha = fabs(offsetWithoutInsets) / (self.frame.size.height + 30)
-                    if alpha > 0.9 {
-                        alpha = 0.9
+                    if alpha > 0.8 {
+                        alpha = 0.8
                     }
                     self.arrow.alpha = alpha
                 }
@@ -168,10 +171,10 @@ public class PullToRefreshView: UIView {
             scrollView.bounces = false
             UIView.animateWithDuration(PullToRefreshConst.animationDuration, delay: 0, options:nil, animations: {
                 scrollView.contentInset = insets
-                //scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, -insets.top)
+                scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, -insets.top)
                 }, completion: {finished in
-                    if PullToRefreshConst.autoStop {
-                        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(PullToRefreshConst.autoStopDuration * Double(NSEC_PER_SEC)))
+                    if self.options.autoStopTime != 0 {
+                        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(self.options.autoStopTime * Double(NSEC_PER_SEC)))
                         dispatch_after(time, dispatch_get_main_queue()) {
                             self.state = .Normal
                         }
