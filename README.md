@@ -36,12 +36,29 @@ Add the following files to your project.
 In your UIViewController Including UITableView, UICollectionView, UIScrollView:
 ```swift
   override func viewDidLoad() {
-        self.tableView.addPullToRefresh({ () -> () in
+        self.tableView.addPullToRefresh({ [weak self] in
             // refresh code
             
-            self.tableView.reloadData()
-            self.tableView.stopPullToRefresh()
+            self?.tableView.reloadData()
+            self?.tableView.stopPullToRefresh()
         })
+  }
+```
+
+You can use PullToRefreshOption class at addPullToRefresh func option parameter:
+```swift
+  override func viewDidLoad() {
+       let options = PullToRefreshOption()
+        options.backgroundColor = UIColor.blueColor()
+        options.indicatorColor = UIColor.whiteColor()
+        
+        self.tableView.addPullToRefresh(options: options, { [weak self] in
+            // some code
+            
+            self?.tableView.reloadData()
+            self?.tableView.stopPullToRefresh()
+        })
+        
   }
 ```
   
@@ -52,16 +69,25 @@ If you want to fixed pulltoRefreshView, please implement scrollViewDidScroll.
   }  
 ```
   
-If you want to use the custom option, please change the PullToRefreshConst class.
-
+If you want to use the custom const, please change the PullToRefreshConst class.
 ```swift
 struct PullToRefreshConst {
-    static let backgroundColor = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1.0)
-    static let imageName: String = "pulltorefresharrow.png"
-    static let height: CGFloat = 80
-    static let duration: Double = 0.5
     static let tag = 810
     static let alpha = true
+    static let height: CGFloat = 80
+    static let imageName: String = "pulltorefresharrow.png"
+    static let animationDuration: Double = 0.4
+    static let fixedTop = true // PullToRefreshView fixed Top
+}
+```
+If you want to use the custom option, please change the PullToRefreshOption class.
+You can use this class at addPullToRefresh func option parameter.
+```swift
+class PullToRefreshOption {
+    var backgroundColor = UIColor.clearColor()
+    var indicatorColor = UIColor.grayColor()
+    var autoStopTime: Double = 0.7 // 0 is not auto stop
+    var fixedSectionHeader = false  // Update the content inset for fixed section headers
 }
 ```
 
