@@ -28,6 +28,9 @@ public class PullToRefreshView: UIView {
     
     var state: PullToRefreshState = PullToRefreshState.Normal {
         didSet {
+            if self.state == oldValue {
+                return
+            }
             switch self.state {
             case .Normal:
                 stopAnimating()
