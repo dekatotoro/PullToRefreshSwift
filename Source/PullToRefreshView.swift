@@ -88,8 +88,6 @@ public class PullToRefreshView: UIView {
         
         if let scrollView = superView as? UIScrollView {
             scrollView.addObserver(self, forKeyPath: contentOffsetKeyPath, options: .Initial, context: &kvoContext)
-            scrollViewBounces = scrollView.bounces
-            scrollViewInsets = scrollView.contentInset
         }
     }
     
@@ -168,6 +166,9 @@ public class PullToRefreshView: UIView {
         self.arrow.hidden = true
         
         if let scrollView = superview as? UIScrollView {
+            scrollViewBounces = scrollView.bounces
+            scrollViewInsets = scrollView.contentInset
+            
             var insets = scrollView.contentInset
             insets.top += self.frame.size.height
             scrollView.contentOffset.y = self.previousOffset
