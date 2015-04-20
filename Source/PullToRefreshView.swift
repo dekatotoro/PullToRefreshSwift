@@ -207,12 +207,12 @@ public class PullToRefreshView: UIView {
         UIView.animateWithDuration(0.2, delay: 0, options:nil, animations: {
             // -0.0000001 for the rotation direction control
             self.arrow.transform = CGAffineTransformMakeRotation(CGFloat(M_PI-0.0000001))
-            }, nil)
+        }, completion:nil)
     }
     
     private func arrowRotationBack() {
         UIView.animateWithDuration(0.2, delay: 0, options:nil, animations: {
             self.arrow.transform = CGAffineTransformIdentity
-            }, nil)
+            }, completion:nil)
     }
 }
