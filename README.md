@@ -92,7 +92,8 @@ class PullToRefreshOption {
 ```
 
 ## Requirements
-Requires iOS 7.0 and ARC.
+Requires Swift1.2 and iOS 7.0 and ARC.  
+If you are developing in the swift1.1, please use branch of swift1.1.  
 
 ## Features
 - Highly customizable
