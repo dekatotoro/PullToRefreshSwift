@@ -8,8 +8,9 @@ Pod::Spec.new do |s|
   s.social_media_url   = "https://twitter.com/dekatotoro"
   s.platform     = :ios
   s.ios.deployment_target = "8.0"
-  s.source       = { :git => "https://github.com/dekatotoro/PullToRefreshSwift", :tag => "1.0.0" }
-  s.source_files  = "Source/*"
+  s.source       = { :git => "https://github.com/dekatotoro/PullToRefreshSwift.git", :tag => "1.0.0" }
+  s.source_files = "Source/**/*.{h,m,swift}"
+  s.resources    = 'Source/**/*.{svg,png,xib}'
   s.requires_arc = true
 end
 
