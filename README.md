@@ -19,7 +19,9 @@ iOS Simple PullToRefresh Library.
 ##Installation
 
 ####CocoaPods
-comming soon...
+```
+pod 'PullToRefreshSwift'
+```
 
 ####Manually
 Add the following files to your project. 
