@@ -51,7 +51,7 @@ public class PullToRefreshView: UIView {
         super.init(coder: aDecoder)
     }
     
-    convenience init(options: PullToRefreshOption, frame: CGRect, refreshCompletion :(() -> ())) {
+    public convenience init(options: PullToRefreshOption, frame: CGRect, refreshCompletion :(() -> ())) {
         self.init(frame: frame)
         self.options = options
         self.refreshCompletion = refreshCompletion
@@ -73,7 +73,7 @@ public class PullToRefreshView: UIView {
         self.indicator.color = options.indicatorColor
         self.addSubview(indicator)
         
-        self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
+        self.autoresizingMask = .FlexibleWidth
     }
    
     public override func layoutSubviews() {
