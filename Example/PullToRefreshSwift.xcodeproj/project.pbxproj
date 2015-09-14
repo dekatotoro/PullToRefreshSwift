@@ -183,6 +183,8 @@
 		C53BEC321A357BC9008A4302 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Yuji Hato";
 				TargetAttributes = {

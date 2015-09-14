@@ -47,11 +47,11 @@ public class PullToRefreshView: UIView {
         super.init(frame: frame)
     }
     
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    convenience init(options: PullToRefreshOption, frame: CGRect, refreshCompletion :(() -> ())) {
+    public convenience init(options: PullToRefreshOption, frame: CGRect, refreshCompletion :(() -> ())) {
         self.init(frame: frame)
         self.options = options
         self.refreshCompletion = refreshCompletion
@@ -62,8 +62,9 @@ public class PullToRefreshView: UIView {
         self.addSubview(backgroundView)
         
         self.arrow = UIImageView(frame: CGRectMake(0, 0, 30, 30))
-        self.arrow.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin |  UIViewAutoresizing.FlexibleRightMargin
-        self.arrow.image = UIImage(named: PullToRefreshConst.imageName)
+        self.arrow.autoresizingMask = [.FlexibleLeftMargin, .FlexibleRightMargin]
+        
+        self.arrow.image = UIImage(named: PullToRefreshConst.imageName, inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)
         self.addSubview(arrow)
         
         self.indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
@@ -73,7 +74,7 @@ public class PullToRefreshView: UIView {
         self.indicator.color = options.indicatorColor
         self.addSubview(indicator)
         
-        self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
+        self.autoresizingMask = .FlexibleWidth
     }
    
     public override func layoutSubviews() {
@@ -99,7 +100,7 @@ public class PullToRefreshView: UIView {
     
     // MARK: KVO
     
-    public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<()>) {
+    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<()>) {
         
         if (context == &kvoContext && keyPath == contentOffsetKeyPath) {
             if let scrollView = object as? UIScrollView {
@@ -107,7 +108,7 @@ public class PullToRefreshView: UIView {
                 // Debug
                 //println(scrollView.contentOffset.y)
                 
-                var offsetWithoutInsets = self.previousOffset + self.scrollViewInsets.top
+                let offsetWithoutInsets = self.previousOffset + self.scrollViewInsets.top
                 
                 // Update the content inset for fixed section headers
                 if self.options.fixedSectionHeader && self.state == .Refreshing {
@@ -173,7 +174,7 @@ public class PullToRefreshView: UIView {
             insets.top += self.frame.size.height
             scrollView.contentOffset.y = self.previousOffset
             scrollView.bounces = false
-            UIView.animateWithDuration(PullToRefreshConst.animationDuration, delay: 0, options:nil, animations: {
+            UIView.animateWithDuration(PullToRefreshConst.animationDuration, delay: 0, options:[], animations: {
                 scrollView.contentInset = insets
                 scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, -insets.top)
                 }, completion: {finished in
@@ -204,14 +205,14 @@ public class PullToRefreshView: UIView {
     }
     
     private func arrowRotation() {
-        UIView.animateWithDuration(0.2, delay: 0, options:nil, animations: {
+        UIView.animateWithDuration(0.2, delay: 0, options:[], animations: {
             // -0.0000001 for the rotation direction control
             self.arrow.transform = CGAffineTransformMakeRotation(CGFloat(M_PI-0.0000001))
         }, completion:nil)
     }
     
     private func arrowRotationBack() {
-        UIView.animateWithDuration(0.2, delay: 0, options:nil, animations: {
+        UIView.animateWithDuration(0.2, delay: 0, options:[], animations: {
             self.arrow.transform = CGAffineTransformIdentity
             }, completion:nil)
     }
