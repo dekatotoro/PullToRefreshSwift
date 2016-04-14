@@ -22,6 +22,7 @@ public class PullToRefreshView: UIView {
     private var backgroundView: UIView
     private var arrow: UIImageView
     private var indicator: UIActivityIndicatorView
+    private var label:UILabel
     private var scrollViewBounces: Bool = false
     private var scrollViewInsets: UIEdgeInsets = UIEdgeInsetsZero
     private var refreshCompletion: (Void -> Void)?
@@ -35,12 +36,16 @@ public class PullToRefreshView: UIView {
             switch self.state {
             case .Stop:
                 stopAnimating()
+                self.label.text = NSLocalizedString("Finished refreshing",comment:"")
             case .Refreshing:
                 startAnimating()
+                self.label.text = NSLocalizedString("Refreshing",comment:"")
             case .Pulling:
                 arrowRotationBack()
+                self.label.text = "";
             case .Triggered:
                 arrowRotation()
+                self.label.text = NSLocalizedString("Release to refresh",comment:"")
             }
         }
     }
@@ -65,6 +70,8 @@ public class PullToRefreshView: UIView {
         self.arrow = UIImageView(frame: CGRectMake(0, 0, 30, 30))
         self.arrow.autoresizingMask = [.FlexibleLeftMargin, .FlexibleRightMargin]
         
+        self.label = UILabel(frame: CGRectMake(0, 0, frame.size.width/2, frame.size.height))
+        
         if #available(iOS 8.0, *) {
             self.arrow.image = UIImage(named: PullToRefreshConst.imageName, inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)
         } else {
@@ -83,12 +90,19 @@ public class PullToRefreshView: UIView {
         self.addSubview(indicator)
         self.addSubview(backgroundView)
         self.addSubview(arrow)
+        self.addSubview(label)
         self.autoresizingMask = .FlexibleWidth
     }
    
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.arrow.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2)
+        self.label.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2)
+        self.arrow.frame = CGRectOffset(arrow.frame, -60, 0)
+        let x = self.arrow.frame.origin.x + self.arrow.frame.width + 20
+        var frame = self.label.frame
+        frame.origin.x = x
+        self.label.frame = frame
         self.indicator.center = self.arrow.center
     }
     
