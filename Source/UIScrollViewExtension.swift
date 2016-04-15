@@ -15,46 +15,63 @@ public extension UIScrollView {
     }
 
     public func addPullRefreshHandler(refreshCompletion :(Void -> Void)?) {
-        self.addPullToRefresh(refreshCompletion)
+        self.addPullRefresh(refreshCompletion)
     }
     
     public func addPushRefreshHandler(refreshCompletion :(Void -> Void)?) {
-        self.layoutIfNeeded()//to get the correct contentSize
-        self.addPushToRefresh(refreshCompletion)
+        self.addPushRefresh(refreshCompletion)
     }
     
-    private func addPullToRefresh(refreshCompletion :((Void -> Void)?), options: PullToRefreshOption = PullToRefreshOption()) {
+    private func addPullRefresh(refreshCompletion :((Void -> Void)?), options: PullToRefreshOption = PullToRefreshOption()) {
         let refreshViewFrame = CGRectMake(0, -PullToRefreshConst.height, self.frame.size.width, PullToRefreshConst.height)
         let refreshView = PullToRefreshView(options: options, frame: refreshViewFrame, refreshCompletion: refreshCompletion)
         refreshView.tag = PullToRefreshConst.pullTag
         addSubview(refreshView)
     }
     
-    private func addPushToRefresh(refreshCompletion :((Void -> Void)?), options: PullToRefreshOption = PullToRefreshOption()) {
+    private func addPushRefresh(refreshCompletion :((Void -> Void)?), options: PullToRefreshOption = PullToRefreshOption()) {
         let refreshViewFrame = CGRectMake(0, contentSize.height, self.frame.size.width, PullToRefreshConst.height)
         let refreshView = PullToRefreshView(options: options, frame: refreshViewFrame, refreshCompletion: refreshCompletion,down: false)
         refreshView.tag = PullToRefreshConst.pushTag
         addSubview(refreshView)
     }
     
-    public func startPullToRefresh() {
+    public func startPullRefresh() {
         let refreshView = self.refreshViewWithTag(PullToRefreshConst.pullTag)
         refreshView?.state = .Refreshing
     }
     
-    public func stopPullToRefresh() {
+    public func stopPullRefreshEver(ever:Bool = false) {
         let refreshView = self.refreshViewWithTag(PullToRefreshConst.pullTag)
-        refreshView?.state = .Stop
+        if ever {
+            refreshView?.state = .Finish
+        } else {
+            refreshView?.state = .Stop
+        }
     }
     
-    public func startPushToRefresh() {
+    public func removePullRefresh() {
+        let refreshView = self.refreshViewWithTag(PullToRefreshConst.pullTag)
+        refreshView?.removeFromSuperview()
+    }
+    
+    public func startPushRefresh() {
         let refreshView = self.refreshViewWithTag(PullToRefreshConst.pushTag)
         refreshView?.state = .Refreshing
     }
     
-    public func stopPushToRefresh() {
+    public func stopPushRefreshEver(ever:Bool = false) {
         let refreshView = self.refreshViewWithTag(PullToRefreshConst.pushTag)
-        refreshView?.state = .Stop
+        if ever {
+            refreshView?.state = .Finish
+        } else {
+            refreshView?.state = .Stop
+        }
+    }
+    
+    public func removePushRefresh() {
+        let refreshView = self.refreshViewWithTag(PullToRefreshConst.pushTag)
+        refreshView?.removeFromSuperview()
     }
     
     // If you want to PullToRefreshView fixed top potision, Please call this function in scrollViewDidScroll

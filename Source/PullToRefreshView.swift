@@ -3,6 +3,7 @@
 //  PullToRefreshSwift
 //
 //  Created by Yuji Hato on 12/11/14.
+//  Qiulang rewrites it to support pull down & push up
 //
 import UIKit
 
@@ -12,10 +13,12 @@ public class PullToRefreshView: UIView {
         case Triggered
         case Refreshing
         case Stop
+        case Finish
     }
     
     // MARK: Variables
     let contentOffsetKeyPath = "contentOffset"
+    let contentSizeKeyPath = "contentSize"
     var kvoContext = "PullToRefreshKVOContext"
     
     private var options: PullToRefreshOption
@@ -28,6 +31,17 @@ public class PullToRefreshView: UIView {
     private var refreshCompletion: (Void -> Void)?
     private var pull:Bool = true
     
+    private var positionY:CGFloat = 0 {
+        didSet {
+            if self.positionY == oldValue {
+                return
+            }
+            var frame = self.frame
+            frame.origin.y = positionY
+            self.frame = frame
+        }
+    }
+    
     var state: PullToRefreshState = PullToRefreshState.Pulling {
         didSet {
             if self.state == oldValue {
@@ -35,19 +49,42 @@ public class PullToRefreshView: UIView {
             }
             switch self.state {
             case .Stop:
-                stopAnimating()
                 self.label.text = NSLocalizedString("Finished refreshing",comment:"")
+                stopAnimating()
+            case .Finish:
+                self.label.text = NSLocalizedString("Got all data",comment:"")
+                var duration = PullToRefreshConst.animationDuration
+                var time = dispatch_time(DISPATCH_TIME_NOW, Int64(duration * Double(NSEC_PER_SEC)))
+                dispatch_after(time, dispatch_get_main_queue()) {
+                    self.stopAnimating()
+                }
+                duration = duration * 2
+                time = dispatch_time(DISPATCH_TIME_NOW, Int64(duration * Double(NSEC_PER_SEC)))
+                dispatch_after(time, dispatch_get_main_queue()) {
+                    self.removeFromSuperview()
+                }
             case .Refreshing:
-                startAnimating()
-                self.label.text = NSLocalizedString("Refreshing",comment:"")
-            case .Pulling:
+                if oldValue == .Triggered {
+                    self.label.text = NSLocalizedString("Loading...",comment:"")
+                    startAnimating()
+                }
+            case .Pulling: //starting point
                 arrowRotationBack()
-                self.label.text = "";
+                if self.arrow.alpha > 0.4 {
+                    self.label.text = pull ? NSLocalizedString("Pull down to refresh",comment:"") :
+                        NSLocalizedString("Push up to refresh",comment:"")
+                } else {
+                    self.label.text = "";
+                }
             case .Triggered:
                 arrowRotation()
-                self.label.text = NSLocalizedString("Release to refresh",comment:"")
-            }
-        }
+                if pull {
+                    self.label.text = NSLocalizedString("Pull release to refresh",comment:"")
+                } else {
+                    self.label.text = NSLocalizedString("Push release to refresh",comment:"")
+                }
+            } //switch
+        }// didSet
     }
     
     // MARK: UIView
@@ -59,7 +96,7 @@ public class PullToRefreshView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public init(options: PullToRefreshOption, frame: CGRect, refreshCompletion :(() -> Void)?, down:Bool=true) {
+    public init(options: PullToRefreshOption, frame: CGRect, refreshCompletion :(Void -> Void)?, down:Bool=true) {
         self.options = options
         self.refreshCompletion = refreshCompletion
 
@@ -83,7 +120,6 @@ public class PullToRefreshView: UIView {
         self.indicator.autoresizingMask = self.arrow.autoresizingMask
         self.indicator.hidesWhenStopped = true
         self.indicator.color = options.indicatorColor
-        
         self.pull = down
         
         super.init(frame: frame)
@@ -107,29 +143,44 @@ public class PullToRefreshView: UIView {
     }
     
     public override func willMoveToSuperview(superView: UIView!) {
-        //superview NOT superView
-        superview?.removeObserver(self, forKeyPath: contentOffsetKeyPath, context: &kvoContext)
-        //superView NOT superview
+        //superview NOT superView, DO NEED to call the following method
+        //superview dealloc will call into this when my own dealloc run later!!
+        self.removeRegister()
         guard let scrollView = superView as? UIScrollView else {
             return
         }
         scrollView.addObserver(self, forKeyPath: contentOffsetKeyPath, options: .Initial, context: &kvoContext)
+        if !pull {
+            scrollView.addObserver(self, forKeyPath: contentSizeKeyPath, options: .Initial, context: &kvoContext)
+        }
+    }
+    
+    private func removeRegister() {
+        if let scrollView = superview as? UIScrollView {
+            scrollView.removeObserver(self, forKeyPath: contentOffsetKeyPath, context: &kvoContext)
+            if !pull {
+                scrollView.removeObserver(self, forKeyPath: contentSizeKeyPath, context: &kvoContext)
+            }
+        }
     }
     
     deinit {
-        if let scrollView = superview as? UIScrollView {
-            scrollView.removeObserver(self, forKeyPath: contentOffsetKeyPath, context: &kvoContext)
-        }
+        self.removeRegister()
     }
     
     // MARK: KVO
     
     public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<()>) {
-        if !(context == &kvoContext && keyPath == contentOffsetKeyPath) {
-            super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+        guard let scrollView = object as? UIScrollView else {
             return
         }
-        guard let scrollView = object as? UIScrollView else {
+        if keyPath == contentSizeKeyPath {
+            self.positionY = scrollView.contentSize.height
+            return
+        }
+        
+        if !(context == &kvoContext && keyPath == contentOffsetKeyPath) {
+            super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
             return
         }
         
@@ -138,7 +189,7 @@ public class PullToRefreshView: UIView {
         
         // Alpha set
         if PullToRefreshConst.alpha {
-            var alpha = fabs(offsetY) / (self.frame.size.height + 30)
+            var alpha = fabs(offsetY) / (self.frame.size.height + 40)
             if alpha > 0.8 {
                 alpha = 0.8
             }
@@ -156,7 +207,7 @@ public class PullToRefreshView: UIView {
                 } else if self.state != .Refreshing { //reach the threshold
                     self.state = .Triggered
                 }
-            } else if (self.state != .Refreshing && offsetY < 0) {
+            } else if self.state == .Triggered {
                 //starting point, start from pulling
                 self.state = .Pulling
             }
@@ -177,7 +228,7 @@ public class PullToRefreshView: UIView {
                 } else if self.state != .Refreshing { //reach the threshold
                     self.state = .Triggered
                 }
-            } else if (self.state != .Refreshing && upHeight > 0) {
+            } else if self.state == .Triggered  {
                 //starting point, start from pulling
                 self.state = .Pulling
             }
@@ -208,7 +259,7 @@ public class PullToRefreshView: UIView {
                                    animations: {
             scrollView.contentInset = insets
             },
-                                   completion: {finished in
+                                   completion: { _ in
                 if self.options.autoStopTime != 0 {
                     let time = dispatch_time(DISPATCH_TIME_NOW, Int64(self.options.autoStopTime * Double(NSEC_PER_SEC)))
                     dispatch_after(time, dispatch_get_main_queue()) {
@@ -226,14 +277,14 @@ public class PullToRefreshView: UIView {
             return
         }
         scrollView.bounces = self.scrollViewBounces
-        UIView.animateWithDuration(PullToRefreshConst.animationDuration,
+        let duration = PullToRefreshConst.animationDuration
+        UIView.animateWithDuration(duration,
                                    animations: {
                                     scrollView.contentInset = self.scrollViewInsets
                                     self.arrow.transform = CGAffineTransformIdentity
                                     }
-                                  )
-        { _ in
-            //self.arrow.transform = CGAffineTransformIdentity
+        ) { _ in
+            self.state = .Pulling
         }
     }
     
