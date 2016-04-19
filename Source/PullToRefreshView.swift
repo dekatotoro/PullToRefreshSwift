@@ -25,11 +25,10 @@ public class PullToRefreshView: UIView {
     private var backgroundView: UIView
     private var arrow: UIImageView
     private var indicator: UIActivityIndicatorView
-    private var label:UILabel
     private var scrollViewBounces: Bool = false
     private var scrollViewInsets: UIEdgeInsets = UIEdgeInsetsZero
     private var refreshCompletion: (Void -> Void)?
-    private var pull:Bool = true
+    private var pull: Bool = true
     
     private var positionY:CGFloat = 0 {
         didSet {
@@ -49,10 +48,8 @@ public class PullToRefreshView: UIView {
             }
             switch self.state {
             case .Stop:
-                self.label.text = NSLocalizedString("Finished refreshing",comment:"")
                 stopAnimating()
             case .Finish:
-                self.label.text = NSLocalizedString("Got all data",comment:"")
                 var duration = PullToRefreshConst.animationDuration
                 var time = dispatch_time(DISPATCH_TIME_NOW, Int64(duration * Double(NSEC_PER_SEC)))
                 dispatch_after(time, dispatch_get_main_queue()) {
@@ -64,27 +61,13 @@ public class PullToRefreshView: UIView {
                     self.removeFromSuperview()
                 }
             case .Refreshing:
-                if oldValue == .Triggered {
-                    self.label.text = NSLocalizedString("Loading...",comment:"")
-                    startAnimating()
-                }
+                startAnimating()
             case .Pulling: //starting point
                 arrowRotationBack()
-                if self.arrow.alpha > 0.4 {
-                    self.label.text = pull ? NSLocalizedString("Pull down to refresh",comment:"") :
-                        NSLocalizedString("Push up to refresh",comment:"")
-                } else {
-                    self.label.text = "";
-                }
             case .Triggered:
                 arrowRotation()
-                if pull {
-                    self.label.text = NSLocalizedString("Pull release to refresh",comment:"")
-                } else {
-                    self.label.text = NSLocalizedString("Push release to refresh",comment:"")
-                }
-            } //switch
-        }// didSet
+            }
+        }
     }
     
     // MARK: UIView
@@ -107,13 +90,8 @@ public class PullToRefreshView: UIView {
         self.arrow = UIImageView(frame: CGRectMake(0, 0, 30, 30))
         self.arrow.autoresizingMask = [.FlexibleLeftMargin, .FlexibleRightMargin]
         
-        self.label = UILabel(frame: CGRectMake(0, 0, frame.size.width/2, frame.size.height))
+        self.arrow.image = UIImage(named: PullToRefreshConst.imageName, inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)
         
-        if #available(iOS 8.0, *) {
-            self.arrow.image = UIImage(named: PullToRefreshConst.imageName, inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)
-        } else {
-            self.arrow.image = UIImage(named: PullToRefreshConst.imageName);
-        }
         
         self.indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         self.indicator.bounds = self.arrow.bounds
@@ -126,19 +104,13 @@ public class PullToRefreshView: UIView {
         self.addSubview(indicator)
         self.addSubview(backgroundView)
         self.addSubview(arrow)
-        self.addSubview(label)
         self.autoresizingMask = .FlexibleWidth
     }
    
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.arrow.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2)
-        self.label.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2)
-        self.arrow.frame = CGRectOffset(arrow.frame, -60, 0)
-        let x = self.arrow.frame.origin.x + self.arrow.frame.width + 20
-        var frame = self.label.frame
-        frame.origin.x = x
-        self.label.frame = frame
+        self.arrow.frame = CGRectOffset(arrow.frame, 0, 0)
         self.indicator.center = self.arrow.center
     }
     
@@ -200,6 +172,8 @@ public class PullToRefreshView: UIView {
             if !self.pull {
                 return
             }
+            print(offsetY)
+            print(self.frame.size.height)
             if offsetY < -self.frame.size.height {
                 // pulling or refreshing
                 if scrollView.dragging == false && self.state != .Refreshing { //release the finger

@@ -25,7 +25,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             sleep(1)
             self?.texts.shuffle()
             self?.tableView.reloadData()
-            //self?.tableView.stopPullToRefresh()
+            self?.tableView.stopPullRefreshEver()
         })
         self.tableView.addPushRefreshHandler({ [weak self] in
             // some code

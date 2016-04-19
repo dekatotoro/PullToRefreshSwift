@@ -32,7 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8C37CA271A3E815D00B3EFD4 /* pulltorefresharrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pulltorefresharrow.png; sourceTree = "<group>"; };
+		8C37CA271A3E815D00B3EFD4 /* pulltorefresharrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pulltorefresharrow.png; path = ../../Source/pulltorefresharrow.png; sourceTree = "<group>"; };
 		8C37CA281A3E815D00B3EFD4 /* PullToRefreshOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshOption.swift; sourceTree = "<group>"; };
 		8C37CA291A3E815D00B3EFD4 /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
 		8C37CA2A1A3E815D00B3EFD4 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
@@ -68,15 +68,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8C37CA261A3E815D00B3EFD4 /* Source */ = {
+		8C37CA261A3E815D00B3EFD4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				8C37CA271A3E815D00B3EFD4 /* pulltorefresharrow.png */,
 				8C37CA281A3E815D00B3EFD4 /* PullToRefreshOption.swift */,
 				8C37CA291A3E815D00B3EFD4 /* PullToRefreshView.swift */,
 				8C37CA2A1A3E815D00B3EFD4 /* UIScrollViewExtension.swift */,
 			);
-			name = Source;
+			name = Sources;
 			path = ../../Source;
 			sourceTree = "<group>";
 		};
@@ -101,7 +100,8 @@
 		C53BEC3C1A357BCA008A4302 /* PullToRefreshSwift */ = {
 			isa = PBXGroup;
 			children = (
-				8C37CA261A3E815D00B3EFD4 /* Source */,
+				8C37CA261A3E815D00B3EFD4 /* Sources */,
+				C5DE09351CC6488100BD4E0D /* Resouces */,
 				C53BEC3F1A357BCA008A4302 /* AppDelegate.swift */,
 				C53BEC441A357BCA008A4302 /* ViewController.swift */,
 				C54F64511A39733E00518F38 /* ArrayExtension.swift */,
@@ -137,6 +137,14 @@
 				C53BEC571A357BCA008A4302 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C5DE09351CC6488100BD4E0D /* Resouces */ = {
+			isa = PBXGroup;
+			children = (
+				8C37CA271A3E815D00B3EFD4 /* pulltorefresharrow.png */,
+			);
+			name = Resouces;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,7 +381,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PullToRefreshSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dekatotoro.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -385,7 +393,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PullToRefreshSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dekatotoro.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
