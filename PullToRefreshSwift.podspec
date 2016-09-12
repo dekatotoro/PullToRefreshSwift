@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "PullToRefreshSwift"
-  s.version      = "2.3.0"
+  s.version      = "3.0.0"
   s.summary      = "iOS Simple PullToRefresh Library."
   s.homepage     = "https://github.com/dekatotoro/PullToRefreshSwift"
   s.license      = { :type => "MIT", :file => "LICENSE" }
