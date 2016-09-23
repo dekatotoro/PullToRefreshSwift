@@ -172,8 +172,7 @@ open class PullToRefreshView: UIView {
             if !self.pull {
                 return
             }
-            print(offsetY)
-            print(self.frame.size.height)
+
             if offsetY < -self.frame.size.height {
                 // pulling or refreshing
                 if scrollView.isDragging == false && self.state != .refreshing { //release the finger
