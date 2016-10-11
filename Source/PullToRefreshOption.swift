@@ -17,8 +17,15 @@ struct PullToRefreshConst {
 }
 
 public struct PullToRefreshOption {
-    public var backgroundColor = UIColor.clear
-    public var indicatorColor = UIColor.gray
-    public var autoStopTime: Double = 0 // 0 is not auto stop
-    public var fixedSectionHeader = false  // Update the content inset for fixed section headers
+    public var backgroundColor: UIColor
+    public var indicatorColor: UIColor
+    public var autoStopTime: Double // 0 is not auto stop
+    public var fixedSectionHeader: Bool // Update the content inset for fixed section headers
+    
+    public init(backgroundColor: UIColor = .clear, indicatorColor: UIColor = .gray, autoStopTime: Double = 0, fixedSectionHeader: Bool = false) {
+        self.backgroundColor = backgroundColor
+        self.indicatorColor = indicatorColor
+        self.autoStopTime = autoStopTime
+        self.fixedSectionHeader = fixedSectionHeader
+    }
 }
