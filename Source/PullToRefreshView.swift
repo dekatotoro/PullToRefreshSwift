@@ -25,7 +25,6 @@ open class PullToRefreshView: UIView {
     fileprivate var backgroundView: UIView
     fileprivate var arrow: UIImageView
     fileprivate var indicator: UIActivityIndicatorView
-    fileprivate var scrollViewBounces: Bool = false
     fileprivate var scrollViewInsets: UIEdgeInsets = UIEdgeInsets.zero
     fileprivate var refreshCompletion: ((Void) -> Void)?
     fileprivate var pull: Bool = true
@@ -216,7 +215,6 @@ open class PullToRefreshView: UIView {
         guard let scrollView = superview as? UIScrollView else {
             return
         }
-        scrollViewBounces = scrollView.bounces
         scrollViewInsets = scrollView.contentInset
         
         var insets = scrollView.contentInset
@@ -249,7 +247,7 @@ open class PullToRefreshView: UIView {
         guard let scrollView = superview as? UIScrollView else {
             return
         }
-        scrollView.bounces = self.scrollViewBounces
+        scrollView.bounces = true
         let duration = PullToRefreshConst.animationDuration
         UIView.animate(withDuration: duration,
                                    animations: {
